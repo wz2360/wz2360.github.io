@@ -13,4 +13,5 @@ function draw() {
   text('HELLO', 10, 30);
   fill('#F5D0C4');
   text('WORLD', 40, 60);
+
 }
