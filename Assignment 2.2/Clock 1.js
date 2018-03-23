@@ -1,49 +1,29 @@
-var hour_xs = [], hour_ys = [];
-var minute_xs = [], minute_ys = [];
-var second_xs = [], second_ys = [];
-
-function setup(){
+function setup() {
   createCanvas(600,600);
-  frameRate(1); //1 FPS, since nothing needs to change between seconds
-  noStroke();
-
-  // Set the random positions for this session (so balls merely show/hide,
-  // they don't actually move in this clock.)
-  for (var i = 0; i < 24; i++){
-    append(hour_xs, random(width));
-    append(hour_ys, random(height));
-  }
-
-  for (var i = 0; i < 60; i++){
-    append(minute_xs, random(width));
-    append(minute_ys, random(height));
-  }
-
-  for (var i = 0; i < 60; i++){
-    append(second_xs, random(width));
-    append(second_ys, random(height));
-  }
 }
 
-function draw(){
-  background(255);
-  fill(0);
+function draw() {
+  background(0);
 
-  for (var i = 0; i < second(); i++){
-    drawBall(second_xs[i], second_ys[i], 10, 190);
-  }
+  var x=10;
+  var y=120;
 
-  for (var i = 0; i < minute(); i++){
-    drawBall(minute_xs[i], minute_ys[i], 40, 150);
-  }
+  var h=hour();
+  var m=minute();
+  var s=second();
+  fill(255);
 
-  for (var i = 0; i < hour(); i++){
-    drawBall(hour_xs[i], hour_ys[i], 90, 80);
-  }
+  if (h>=12){h=h-12}
 
-}
-
-function drawBall(x, y, dia, k) {
-  fill(k, 150); // grayscale with 150/255 transparency
-  ellipse(x, y, dia, dia);
+  hhand= map(h,0,12,0,2*PI);
+  mhand= map(m,0,60,0,2*PI);
+  shand= map(s,0,60,0,2*PI);
+  //
+  ellipse(width,width,1100,1100);
+  fill(51,165,104)
+  arc(width,width,900,900,hhand-(PI/2),-PI/2,PIE);
+  fill(118,51,165)
+  arc(width,width,700,700,mhand-(PI/2),-PI/2,PIE);
+  fill(239,239,98)
+  arc(width,width,500,500,shand-(PI/2),-PI/2, PIE);
 }
