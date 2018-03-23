@@ -1,29 +1,43 @@
 function setup() {
-  createCanvas(600,600);
+  createCanvas(600, 500);
 }
 
 function draw() {
-  background(0);
+  background('white');
+  fill(146, 229, 255, 150);
 
-  var x=10;
-  var y=120;
+  // Map the function second() to values from 0~400
+  push(); // Start a new drawing state
+  rect(0, 0, 100, map(second(), 0, 60, 0, 500));
+  rect(100, 0, 100, map(second()-10, 0, 60, 0, 500));
+  rect(200, 0, 100, map(second()-20, 0, 60, 0, 500));
+  rect(300, 0, 100, map(second()-30, 0, 60, 0, 500));
+  rect(400, 0, 100, map(second()-40, 0, 60, 0, 500));
+  rect(500, 0, 100, map(second()-50, 0, 60, 0, 500));
+  
+  push(); 
+  fill(146, 229, 255, 150);
+  rect(0, 0, 100, map(minute(), 0, 60, 0, 500));
+  rect(100, 0, 100, map(minute()-10, 0, 60, 0, 500));
+  rect(200, 0, 100, map(minute()-20, 0, 60, 0, 500));
+  rect(300, 0, 100, map(minute()-30, 0, 60, 0, 500));
+  rect(400, 0, 100, map(minute()-40, 0, 60, 0, 500));
+  rect(500, 0, 100, map(minute()-50, 0, 60, 0, 500));
 
-  var h=hour();
-  var m=minute();
-  var s=second();
-  fill(255);
-
-  if (h>=12){h=h-12}
-
-  hhand= map(h,0,12,0,2*PI);
-  mhand= map(m,0,60,0,2*PI);
-  shand= map(s,0,60,0,2*PI);
-  //
-  ellipse(width,width,1100,1100);
-  fill(51,165,104)
-  arc(width,width,900,900,hhand-(PI/2),-PI/2,PIE);
-  fill(118,51,165)
-  arc(width,width,700,700,mhand-(PI/2),-PI/2,PIE);
-  fill(239,239,98)
-  arc(width,width,500,500,shand-(PI/2),-PI/2, PIE);
+  push(); 
+  fill(102, 211, 255, 150);
+  rect(0, 0, 100, map(hour(), 0, 12, 0, 500));
+  rect(50, 0, 100, map(hour()-1, 0, 12, 0, 500));
+  rect(100, 0, 100, map(hour()-2, 0, 12, 0, 500));
+  rect(150, 0, 100, map(hour()-3, 0, 12, 0, 500));
+  rect(200, 0, 100, map(hour()-4, 0, 12, 0, 500));
+  rect(250, 0, 100, map(hour()-5, 0, 12, 0, 500));
+  rect(300, 0, 100, map(hour()-6, 0, 12, 0, 500));
+  rect(350, 0, 100, map(hour()-7, 0, 12, 0, 500));
+  rect(400, 0, 100, map(hour()-8, 0, 12, 0, 500));
+  rect(450, 0, 100, map(hour()-9, 0, 12, 0, 500));
+  rect(500, 0, 100, map(hour()-10, 0, 12, 0, 500));
+  rect(550, 0, 100, map(hour()-11, 0, 12, 0, 500));
 }
+
+
