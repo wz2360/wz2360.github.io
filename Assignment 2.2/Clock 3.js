@@ -21,7 +21,7 @@ function draw() {
   noStroke();
   ellipse(cx, cy, clockDiameter, clockDiameter);
 
-fill(0,0,0,20);
+fill(0,0,0,21);
   noStroke();
   ellipse(cx, cy, clockDiameter*0.9, clockDiameter*0.9);
  
