@@ -16,13 +16,14 @@ function draw() {
   ellipse(250, 250, 200, 200);
   pop(); // Restore original state (scale, specifically)
   
-    // First change the mode to degrees (default is radians)
+  // First change the mode to degrees (default is radians)
   angleMode(DEGREES);
-  // Map the function minute() to values from 0~360
-  rotate(map(minute()), 0, 60, 0, 360);
+  push();// Map the function minute() to values from 0~360
+  rotate(map(minute(),0,60,0,2*PI)-(PI/2))
   textSize(50);
-  fill(0, 102, 153);
+  fill(0, 0, 0);
   text('UGHHHHH', 250, 250);
+  pop();
 }
 
 
