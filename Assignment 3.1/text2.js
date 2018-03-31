@@ -1,66 +1,67 @@
 var headlines = [];
-var hitwords = [
-  "Russia",
-  "Iran",
-  "German",
-  "Olympics",
-  "Haiti",
-  "Korea",
-  "Australia",
-  "American",
-  "South Korea",
-  "African",
-  "Syria",
-  "Trump"
+var hitwords= [
+  "of",
+  "on",
+  "are",
+  "is",
+  "in",
+  "with",
+  "at",
+  "for",
+  "a",
+  "an",
+  "from",
+  "New York", 
+  "US",
+  "you",
+  "us",
 ];
 
 function preload() {
 
-  // Assemble url for API call
   var url = "https://api.nytimes.com/svc/topstories/v2/home.json";
-  var apikey = "58faa2021ebb4d989a3017d897e08cd9"; // see: https://developer.nytimes.com
+  var apikey = "e7c9b1b0399949c9b8a3e2da7f068cb4"; // see: https://developer.nytimes.com
   url += "?api-key=" + apikey;
 
   nytResponse = loadJSON(url);
-  // loadJSON() is asynchronous, but calling it inside preload() guarantees
-  // we'll have a response before setup() and draw() is run.
+
 }
 
 function setup() {
-  createCanvas(window.innerWidth, 1000);
-  background(0);
+  createCanvas(800, 1200);
+  background(255);
 
+  textSize(40);
   textAlign(LEFT);
-  textFont('Helvetica');
 
-  noLoop(); 
+  noLoop();
 
   extractHeadlines();
 }
 
 function draw() {
-  background(0);
+  background(255);
+  textSize(20);
 
-  var lineheight = 24;
-  var margin = 40;
+  var lineheight = 40;
+  var margin = 20;
   translate(margin, margin);
 
-  for (var i = 0; i < 50; i++) {
-    var words = split(headlines[i], /[\s,]+/);
-    // console.log(words);
+  for (var i = 0; i < headlines.length; i++) {
+    var words = split(headlines[i], ' ');
 
     var nextX = 0;
 
     for (var j = 0; j < words.length; j++) {
-      if (hitwords.includes(words[j])) {
-        textSize(18);
-        stroke(255);
-        strokeWeight(3);
-        fill(255, 138, 51);
+      if (hitwords.includes(words[j].toLowerCase())) {
+        fill("#FFD073");
+        textSize(90); 
+        ;
       } else {
-        textSize(12);
-        noStroke();
-        fill(125+(j*15));
+        fill("#9FE4FC");
+        words[j]='++++++';
+        textSize(25)
+
       }
 
       text(words[j]+' ', nextX, i*lineheight);
@@ -71,10 +72,11 @@ function draw() {
 
 function extractHeadlines() {
 
-  // console.log(nytResponse);
+
   for (var i = 0; i < nytResponse.results.length; i++) {
     var h = nytResponse.results[i].title;
+
     append(headlines, h);
   }
-  // console.log(headlines); // make sure counted data looks as expected
+
 }
