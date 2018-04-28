@@ -1,10 +1,8 @@
-busCompanyCount = {};
-totalTimeDelayedbyBusCompany = {};
-avgTime = {}
+LocationName= {};
+Total = {};
 var nums;
-  var avg_ = [];
-  var bus_name_ = [];
-  var items = [];
+  var LocationName_ = [];
+  var Total_ = [];
 
 function preload() {
   data = loadTable("TIMS_DCPBikeCounts_ON_Street_2014.csv", "csv", "header");
@@ -13,7 +11,7 @@ function preload() {
 function setup() {
 
   createCanvas(1600,1700); //3300
-  avgTimeDelayedByBusCompany();
+  BikeCounts();
   orderData();
 }
 
@@ -23,7 +21,7 @@ function draw() {
   push();
   fill(204, 105, 0); 
   textSize(25);
-  text("Average Bus Delay Times by Bus Company", 40, 30);
+  text("Bike Counts on 16 locations", 40, 30);
   pop();
 
   var x,y,w,h;
@@ -56,67 +54,27 @@ function draw() {
 
 }
 
-function avgTimeDelayedByBusCompany() {
-  var busCompany = data.getColumn("Bus_Company_Name");
-  var timeDelayed = data.getColumn("How_Long_Delayed");
+function BikeCounts() {
+  var LocationName = data.getColumn("LocationName");
+  var Total = data.getColumn("Total");
 
-  for (var i = 0; i < busCompany.length; i++) {
-    if (busCompany[i] in busCompanyCount) {
-      busCompanyCount[busCompany[i]] += 1;
-    }
-    else {
-      busCompanyCount[busCompany[i]] = 1;
-    }
   }
 
- //var val;
- //nums = ["0","1","2","3","4","5","6","7","8","9"];
- for (var i = 0; i < timeDelayed.length; i++) {
-  //console.log(typeof(Number(timeDelayed[i])));
-  // if (timeDelayed[i].length > 2 && nums.includes(timeDelayed[i].slice(0,1))) {
-  //   if (nums.includes(timeDelayed[i].slice(1,2))) {
-  //     val = Number(timeDelayed[i].slice(0,2));
-  // }
-  // else {
-  //   val = Number(timeDelayed[i].slice(0,1));
-  // }
-  // }
-  if (busCompany[i] in totalTimeDelayedbyBusCompany) {
-    totalTimeDelayedbyBusCompany[busCompany[i]] += Number(timeDelayed[i]);
-  }
-  else {
-    totalTimeDelayedbyBusCompany[busCompany[i]] = Number(timeDelayed[i]);
-  }
- }
 
-
-var avgDelay;
-for (var key in busCompanyCount) {
-  avgDelay = totalTimeDelayedbyBusCompany[key]/busCompanyCount[key];
-  avgTime[key] = avgDelay;
-}
-}
 
 function orderData() {
 
-    // Create items array
+
 items = Object.keys(avgTime).map(function(key) {
     return [key, avgTime[key]];
 });
-  //Sort the array based on the second element
+
 items.sort(function(first, second) {
     return second[1] - first[1];
 });
 
 console.log(avgTime);
 
-
-// for (var key in avgTime) {
-//     append(bus_name_, key);
-//     append(avg_, avgTime[key]);
-// }
-
-}
 
 
 
