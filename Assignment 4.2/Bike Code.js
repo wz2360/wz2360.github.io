@@ -1,79 +1,26 @@
-LocationName= {};
-Total = {};
-var nums;
-  var LocationName_ = [];
-  var Total_ = [];
+var Street = ["Adam Clayton Powell Blvd at 113th Street", "Adam Clayton Powell Blvd at 113th Street", "Central Park West at W93 St", "Fifth Avenue at 14 St", "First Avenue at E85 St", "Fort Washington Avenue at 173rd Street","Hudson Street/Eighth Avenue at W28 St","Lafayette Street at Astor Pl","Second Avenue at E7 St","Sixth Avenue at W23 St"];
+var Counts = [40, 265, 139, 292, 104, 48, 329, 395, 410, 577];
+var lengthMultiplier = 1; 
 
-function preload() {
-  data = loadTable("TIMS_DCPBikeCounts_ON_Street_2014.csv", "csv", "header");
+function setup(){
+  createCanvas(1000,1000);
+  noLoop();
 }
 
-function setup() {
-
-  createCanvas(1600,1700); //3300
-  BikeCounts();
-  orderData();
-}
-
-function draw() {
-
-  background(255, 230, 204);
-  push();
-  fill(204, 105, 0); 
-  textSize(25);
-  text("Bike Counts on 16 locations", 40, 30);
-  pop();
-
-  var x,y,w,h;
-  margin = 40;
-  translate(margin,margin);
-
-
-  noStroke();
-  fill(255, 156, 51);
-
-  var new_height = 3300;
-  var new_width = 2000;
-
-  for (var i = 0; i < items.length; i++) {
-    x = 0;
-    y = ((new_height-20)*(i/items.length))*0.5;
-    w = (new_width+20)/80*items[i][1];
-    h = ((new_height+20)/items.length)-30;
-    //console.log(items[i][0]);
-
-    push();                    
-    translate(x,y);            
-    rect(0,0,w,h);             
-    fill(204, 105, 0); 
-    textStyle(BOLD);                
-    text(items[i][0],10,(h+10)/2);      
-    pop();                    
+function draw(){
+  for (var i =0; i < Street.length; i++){
+    fill(0);
+    rect(10, 20 + 50 * i, Counts[i] * lengthMultiplier, 20);
   }
-
-
+  for (var i = 0; i < Counts.length; i++){
+   text(Counts[i], 20+Counts[i] * lengthMultiplier, 35 + 50 * i);
 }
 
-function BikeCounts() {
-  var LocationName = data.getColumn("LocationName");
-  var Total = data.getColumn("Total");
-
+for
+    (var i = 0; i < Counts.length; i++){
+    text(Street[i], 10, 55 + 50 * i); 
   }
-
-
-
-function orderData() {
-
-
-items = Object.keys(avgTime).map(function(key) {
-    return [key, avgTime[key]];
-});
-
-items.sort(function(first, second) {
-    return second[1] - first[1];
-});
-
-console.log(avgTime);
+}
 
 
 
