@@ -1,16 +1,16 @@
  var data = [22,851,5356,7991,5960,3891,2344,1798,1244,892,136,91];
- var color1= 'pink';
- var color2= 'gray';
- var color3= 'purple';
- var color4= 'red';
- var color5= 'skyblue';
- var color6= 'navyblue';
- var color7= 'black';
- var color8= 'navy';
- var color9= 'navy';
- var color10= 'navy';
- var color11= 'navy';
- var color12= 'navy';
+ var color1= '#E8F8F5';
+ var color2= '#D1F2EB';
+ var color3= '#A3E4D7';
+ var color4= '#76D7C4';
+ var color5= '#48C9B0';
+ var color6= '#16A085';
+ var color7= '#A2D9CE';
+ var color8= '#1ABC9C';
+ var color9= '#17A589';
+ var color10= '#148F77';
+ var color11= '#0E6251';
+ var color12= '#117864';
 
   var piedata = [], piecolor = [color8,color6,color3,color4,color5,color7,color1,color2,color9,color10,color11,color12];
   var mouseAngle = 0, pieDelta = 0, hover = 0;
@@ -51,9 +51,8 @@
   }
 
   function draw2(){
-    textSize(28);
-    fill(200,130,70);
-    text("xxxx", 25, 60);
-    textSize(16);
-    text("xxxxxx", 27, 90);
-  }
+  ellipse(320, 200, 150, 150,);
+  fill(white);
+   }
+
+   
